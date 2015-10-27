@@ -1,0 +1,27 @@
+puts "Which unit of temperature measurement would you like to convert to the other? Enter c or f (lowercase only):"
+unit = gets.chomp
+
+until unit.match(/c|f/) #Need to check that the entry is ONLY c or F. Currently df would work.
+  print "You did not enter c or f. Enter again:"
+  unit = gets
+end
+
+puts "Enter temperature:"
+temperature = gets.chomp
+
+until temperature.match(/^\d+$/)
+  print "Enter again:"
+  temperature = gets
+end
+
+if unit.match(/c/)
+  temperatureConvert = (temperature.to_f * 9) / 5 + 32
+  measurement = "Fahrenheit"
+elsif unit.match(/f/)
+  temperatureConvert = ((temperature.to_f - 32) * 5) / 9
+  measurement = "Celcius"
+end
+
+
+print temperature, unit.chomp, " converted to ", measurement, " is: ", temperatureConvert.round(2), " degrees."
+#When I enter unit or temperature incorrectly and it promts me again, once I move to the end of the program, it puts a line break in the middle of the last line's output.
